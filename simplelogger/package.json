@@ -1,0 +1,22 @@
+{
+  "name": "com.kr.simplelogger",
+  "version": "1.0.0",
+  "displayName": "Simple Logger by KR",
+  "description": "This is a logger for unity application.\nIt will works only in editor mode and not during standalone mode.",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "keywords": [
+    "ui",
+    "gui",
+    "user interface"
+  ],
+  "author": {
+    "name": "K R Nitheesh",
+    "email": "rnithin133@gmail.com",
+    "url": "https://www.unity.com"
+  },
+  "type": "tool"
+}
