@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
-using LogType = KR.SimpleLogger.LogType;
+using LogType = KR.SimpleLogger.LogType.LogType;
 using Object = UnityEngine.Object;
 
-namespace KR.SimpleLogger {
+namespace KR.SimpleLogger.LogType {
     [Flags]
     public enum LogType : byte {
         None = 0,
@@ -15,14 +15,14 @@ namespace KR.SimpleLogger {
 }
 
 public static class SimpleLogger {
-    public static LogType LogType;
+    public static LogType EnabledLogType;
 
     static SimpleLogger() {
-        Debug.Log("Simple Logger Enabled EnabledLogType = " + LogType);
+        Debug.Log("Simple Logger Enabled EnabledLogType = " + EnabledLogType);
     }
 
     public static void EnableLogger(LogType logType) {
-        LogType = logType;
+        EnabledLogType = logType;
     }
 
     private static string Color(this string myStr, string color) {
@@ -39,25 +39,25 @@ public static class SimpleLogger {
     }
 
     public static void Log(params object[] msg) {
-        if ((LogType & LogType.Log) == 0)
+        if ((EnabledLogType & LogType.Log) == 0)
             return;
         DoLog(Debug.Log, msg);
     }
 
     public static void LogWarning(params object[] msg) {
-        if ((LogType & LogType.LogWarning) == 0)
+        if ((EnabledLogType & LogType.LogWarning) == 0)
             return;
         DoLog(Debug.LogWarning, msg);
     }
 
     public static void LogError(params object[] msg) {
-        if ((LogType & LogType.LogError) == 0)
+        if ((EnabledLogType & LogType.LogError) == 0)
             return;
         DoLog(Debug.LogError, msg);
     }
 
     public static void LogSuccess(params object[] msg) {
-        if ((LogType & LogType.LogSuccess) == 0)
+        if ((EnabledLogType & LogType.LogSuccess) == 0)
             return;
         DoLog(Debug.Log, msg);
     }
@@ -65,25 +65,25 @@ public static class SimpleLogger {
     /// <param name="myObj"> object name</param>
     /// <param name="msg"> prints message</param>
     public static void Log(this Object myObj, params object[] msg) {
-        if ((LogType & LogType.Log) == 0)
+        if ((EnabledLogType & LogType.Log) == 0)
             return;
         DoLog(Debug.Log, myObj, msg);
     }
 
     public static void LogWarning(this Object myObj, params object[] msg) {
-        if ((LogType & LogType.LogWarning) == 0)
+        if ((EnabledLogType & LogType.LogWarning) == 0)
             return;
         DoLog(Debug.LogWarning, myObj, msg);
     }
 
     public static void LogError(this Object myObj, params object[] msg) {
-        if ((LogType & LogType.LogError) == 0)
+        if ((EnabledLogType & LogType.LogError) == 0)
             return;
         DoLog(Debug.LogError, myObj, msg);
     }
 
     public static void LogSuccess(this Object myObj, params object[] msg) {
-        if ((LogType & LogType.LogSuccess) == 0)
+        if ((EnabledLogType & LogType.LogSuccess) == 0)
             return;
         DoLog(Debug.Log, myObj, msg);
     }

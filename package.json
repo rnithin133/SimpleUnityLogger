@@ -1,6 +1,6 @@
 {
   "name": "com.kr.simplelogger",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "displayName": "Simple Logger by KR",
   "description": "This is a logger for unity application.\nIt will works only in editor mode and not during standalone mode.",
   "unity": "2019.1",
