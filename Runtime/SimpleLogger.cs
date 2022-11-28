@@ -1,27 +1,24 @@
 ﻿using System;
 using UnityEngine;
-using LogType = KR.SimpleLogger.LogType.LogType;
 using Object = UnityEngine.Object;
 
-namespace KR.SimpleLogger.LogType {
-    [Flags]
-    public enum LogType : byte {
-        None = 0,
-        Log = 1,
-        LogWarning = 2,
-        LogError = 4,
-        LogSuccess = 8
-    }
+[Flags]
+public enum SimpleLogType : byte {
+    None = 0,
+    Log = 1,
+    LogWarning = 2,
+    LogError = 4,
+    LogSuccess = 8
 }
 
 public static class SimpleLogger {
-    public static LogType EnabledLogType;
+    public static SimpleLogType EnabledLogType;
 
     static SimpleLogger() {
         Debug.Log("Simple Logger Enabled EnabledLogType = " + EnabledLogType);
     }
 
-    public static void EnableLogger(LogType logType) {
+    public static void EnableLogger(SimpleLogType logType) {
         EnabledLogType = logType;
     }
 
@@ -39,25 +36,25 @@ public static class SimpleLogger {
     }
 
     public static void Log(params object[] msg) {
-        if ((EnabledLogType & LogType.Log) == 0)
+        if ((EnabledLogType & SimpleLogType.Log) == 0)
             return;
         DoLog(Debug.Log, msg);
     }
 
     public static void LogWarning(params object[] msg) {
-        if ((EnabledLogType & LogType.LogWarning) == 0)
+        if ((EnabledLogType & SimpleLogType.LogWarning) == 0)
             return;
         DoLog(Debug.LogWarning, msg);
     }
 
     public static void LogError(params object[] msg) {
-        if ((EnabledLogType & LogType.LogError) == 0)
+        if ((EnabledLogType & SimpleLogType.LogError) == 0)
             return;
         DoLog(Debug.LogError, msg);
     }
 
     public static void LogSuccess(params object[] msg) {
-        if ((EnabledLogType & LogType.LogSuccess) == 0)
+        if ((EnabledLogType & SimpleLogType.LogSuccess) == 0)
             return;
         DoLog(Debug.Log, msg);
     }
@@ -65,25 +62,25 @@ public static class SimpleLogger {
     /// <param name="myObj"> object name</param>
     /// <param name="msg"> prints message</param>
     public static void Log(this Object myObj, params object[] msg) {
-        if ((EnabledLogType & LogType.Log) == 0)
+        if ((EnabledLogType & SimpleLogType.Log) == 0)
             return;
         DoLog(Debug.Log, myObj, msg);
     }
 
     public static void LogWarning(this Object myObj, params object[] msg) {
-        if ((EnabledLogType & LogType.LogWarning) == 0)
+        if ((EnabledLogType & SimpleLogType.LogWarning) == 0)
             return;
         DoLog(Debug.LogWarning, myObj, msg);
     }
 
     public static void LogError(this Object myObj, params object[] msg) {
-        if ((EnabledLogType & LogType.LogError) == 0)
+        if ((EnabledLogType & SimpleLogType.LogError) == 0)
             return;
         DoLog(Debug.LogError, myObj, msg);
     }
 
     public static void LogSuccess(this Object myObj, params object[] msg) {
-        if ((EnabledLogType & LogType.LogSuccess) == 0)
+        if ((EnabledLogType & SimpleLogType.LogSuccess) == 0)
             return;
         DoLog(Debug.Log, myObj, msg);
     }
