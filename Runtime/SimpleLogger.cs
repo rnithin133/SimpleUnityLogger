@@ -12,7 +12,7 @@ public enum SimpleLogType : byte {
 }
 
 public static class SimpleLogger {
-    public static SimpleLogType EnabledLogType;
+    public static SimpleLogType EnabledLogType { get; private set; }
 
     static SimpleLogger() {
         Debug.Log("Simple Logger Enabled EnabledLogType = " + EnabledLogType);
